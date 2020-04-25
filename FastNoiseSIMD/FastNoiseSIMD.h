@@ -46,7 +46,7 @@
 #define FN_COMPILE_AVX2
 
 // Only the latest compilers will support this
-//#define FN_COMPILE_AVX512
+#define FN_COMPILE_AVX512
 
 // Using FMA instructions with AVX(51)2/NEON provides a small performance increase but can cause 
 // minute variations in noise output compared to other SIMD levels due to higher calculation precision

@@ -296,7 +296,7 @@ float* FastNoiseSIMD::GetEmptySet(int size)
 		return FastNoiseSIMD_internal::FASTNOISE_SIMD_CLASS(FN_SSE2)::GetEmptySet(size);
 #endif
 #endif
-	return new float[size];
+	return new float[(std::size_t)size];
 }
 
 FastNoiseVectorSet* FastNoiseSIMD::GetVectorSet(int xSize, int ySize, int zSize)

@@ -26,6 +26,13 @@
 // off every 'zix'.)
 //
 
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning (disable: 4456)
+#pragma warning (disable: 4701)
+#pragma warning (disable: 4365)
+#endif
+
 #include "FastNoiseSIMD.h"
 #include <assert.h> 
 
@@ -1639,13 +1646,13 @@ static SIMDf VECTORCALL FUNC(CellularValue##distanceFunc##Single)(SIMDi seed, SI
 
 struct NoiseLookupSettings
 {
-	FastNoiseSIMD::NoiseType type;
 	SIMDf frequency;
-	FastNoiseSIMD::FractalType fractalType;
-	int fractalOctaves;
 	SIMDf fractalLacunarity;
 	SIMDf fractalGain;
 	SIMDf fractalBounding;
+	FastNoiseSIMD::FractalType fractalType;
+	FastNoiseSIMD::NoiseType type;
+	int fractalOctaves;
 };
 
 #define CELLULAR_LOOKUP_FRACTAL_VALUE(noiseType){\
@@ -2416,4 +2423,8 @@ void SIMD_LEVEL_CLASS::FillSampledNoiseSet(float* noiseSet, FastNoiseVectorSet* 
 }
 
 #undef SIMD_LEVEL
+#endif
+
+#ifdef _MSC_VER
+#pragma warning(pop)
 #endif
